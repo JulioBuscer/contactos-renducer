@@ -28,6 +28,7 @@ const TablaContactos = ({ contactos = [], dispatch }) => {
                                 <span style={textBold}>Correo:</span> {contacto.correo}
                                 <br />
                                 <span style={textBold}>Teléfono:</span> {contacto.numero}
+                                
                             </p>
                             <button
                                 onClick={() => handleDelete(contacto.id)}
