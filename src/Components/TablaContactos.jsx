@@ -13,34 +13,30 @@ const TablaContactos = ({ contactos = [], dispatch }) => {
 
 
     return (
-        <table className="table">
-            <thead>
-                <tr>
-                    <th>ID</th>
-                    <th>Nombre</th>
-                    <th>Número</th>
-                    <th>Acción</th>
-                </tr>
-            </thead>
-            <tbody>
-                {
-                    contactos.map((contacto) => {
-                        const finalId = contacto.id.split("-");
-                        return (<tr key={contacto.id}>
-                            <th>{finalId[0]}</th>
-                            <td>{contacto.nombre}</td>
-                            <td>{contacto.numero}</td>
-                            <td>
-                                <button
-                                    onClick={() => handleDelete(contacto.id)}
-                                    className="btn btn-danger">Eliminar</button>
-                            </td>
-                        </tr>);
-                    }
-                    )
-                }
-            </tbody>
-        </table>
+        <div className="row ">
+            {contactos.map((contacto) => {
+                const finalId = contacto.id.split("-");
+                const sizeFoto = { width: '15rem' };
+                const textBold = { 'font-weight': 'bold' };
+                return (
+                    <div className="card" style={sizeFoto}>
+                        <div className="card-header">#ID {finalId[0]}</div>
+                        <img src={contacto.fotoLink} className='card-img-top' alt="SIn Imagen" />
+                        <div className="card-body">
+                            <h5 className='card-title'>{contacto.nombre} {contacto.apellido1} {contacto.apellido2}</h5>
+                            <p>
+                                <span style={textBold}>Correo:</span> {contacto.correo}
+                                <br />
+                                <span style={textBold}>Teléfono:</span> {contacto.numero}
+                            </p>
+                            <button
+                                onClick={() => handleDelete(contacto.id)}
+                                className="btn btn-danger">Eliminar</button>
+                        </div>
+                    </div>
+                );
+            })}
+        </div >
     );
 };
 

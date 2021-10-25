@@ -23,9 +23,13 @@ const Contactos = () => {
     }, [state])
 
     return (
-        <div className="container mt-3">
-            <FormularioAdd dispatch={dispatch} />
-            <TablaContactos contactos={state} dispatch={dispatch} />
+        <div className="container mt-3 row justify-content-center">
+            <div className="col-4">
+                <FormularioAdd dispatch={dispatch} />
+            </div>
+            <div className="col-8">
+                <TablaContactos contactos={state} dispatch={dispatch} />
+            </div>
         </div>
     )
 }
